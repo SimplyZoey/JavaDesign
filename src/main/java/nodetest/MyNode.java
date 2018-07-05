@@ -8,11 +8,10 @@ package nodetest;
 public class MyNode {
      private int item;
      private MyNode next;
-     private MyNode pre;
-     public MyNode(int item,MyNode next,MyNode pre){
+
+     public MyNode(int item,MyNode next){
           this.item = item;
           this.next = next;
-          this.pre = pre;
      }
 
      public int getItem() {
@@ -31,11 +30,4 @@ public class MyNode {
           this.next = next;
      }
 
-     public MyNode getPre() {
-          return pre;
-     }
-
-     public void setPre(MyNode pre) {
-          this.pre = pre;
-     }
 }

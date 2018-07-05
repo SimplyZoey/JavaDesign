@@ -6,7 +6,7 @@ package nodetest;
  * @Date: Create in 2018/7/3 20:14
  */
 public class NodeList {
-    private MyNode first = new MyNode(Integer.MAX_VALUE, null, null);
+    private MyNode first = new MyNode(Integer.MAX_VALUE, null);
     private int length;
 
     public void addNode(MyNode node) {
@@ -14,18 +14,16 @@ public class NodeList {
         MyNode current = first;
         MyNode next = current.getNext();
 
+        //为空，表示当前节点为链表中的第一个节点
         if (next == null) {
             current.setNext(node);
-            node.setPre(first);
-            return;
-        }
-
-        while (next != null) {
-            current = next;
-            next = next.getNext();
-            if (next == null) {
-                current.setNext(node);
-                node.setPre(current);
+        }else {
+            while (next != null) {
+                current = next;
+                next = next.getNext();
+                if (next == null) {
+                    current.setNext(node);
+                }
             }
         }
     }
@@ -48,17 +46,15 @@ public class NodeList {
     private void swapNode(MyNode pre, MyNode current, MyNode next) {
         MyNode temp = next.getNext();
         current.setNext(temp);
-        current.setPre(next);
         pre.setNext(next);
         next.setNext(current);
-        next.setPre(pre);
     }
 
     public static void main(String[] args) {
         NodeList list = new NodeList();
         MyNode node;
         for (int i = 1; i <= 4; i++) {
-            node = new MyNode(i, null, null);
+            node = new MyNode(i, null);
             list.addNode(node);
         }
 
