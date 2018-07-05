@@ -17,7 +17,7 @@ public class NodeList {
         //为空，表示当前节点为链表中的第一个节点
         if (next == null) {
             current.setNext(node);
-        }else {
+        } else {
             while (next != null) {
                 current = next;
                 next = next.getNext();
@@ -29,16 +29,18 @@ public class NodeList {
     }
 
     public void reversal() {
-        int swapTimes = length / 2;
-        MyNode pre = first;
-        MyNode current = first.getNext();
-        MyNode next = current.getNext();
-        for (int i = 0; i < swapTimes; i++) {
-            swapNode(pre, current, next);
-            if (i < swapTimes - 1) {
-                pre = current;
-                current = current.getNext();
-                next = current.getNext();
+        if (length > 1) {
+            int swapTimes = length / 2;
+            MyNode pre = first;
+            MyNode current = first.getNext();
+            MyNode next = current.getNext();
+            for (int i = 0; i < swapTimes; i++) {
+                swapNode(pre, current, next);
+                if (i < swapTimes - 1) {
+                    pre = current;
+                    current = current.getNext();
+                    next = current.getNext();
+                }
             }
         }
     }
