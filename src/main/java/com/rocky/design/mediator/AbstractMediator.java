@@ -17,10 +17,11 @@ public abstract class AbstractMediator {
     protected Sale sale;
     protected Stock stock;
 
+    //由于是子类构造函数触发父类构造函数，所以父类中的this指的是子类对象
     public AbstractMediator() {
-        purchase = new Purchase();
-        sale = new Sale();
-        stock = new Stock();
+        purchase = new Purchase(this);
+        sale = new Sale(this);
+        stock = new Stock(this);
     }
 
     public abstract void execute(String str, Object... objects);

@@ -12,7 +12,11 @@ package com.rocky.design.mediator;
  * @create 2018/7/5
  * @since 1.0.0
  */
-public class Stock {
+public class Stock extends AbstractColleague{
+
+    public Stock(AbstractMediator mediator){
+        super(mediator);
+    }
 
     private static int COMPUTER_NUMBER = 100;
 
@@ -31,12 +35,7 @@ public class Stock {
     }
 
     public void clearStock() {
-        Purchase purchase = new Purchase();
-        Sale sale = new Sale();
         System.out.println("清理库存数量为：" + COMPUTER_NUMBER);
-        //降价销售
-        sale.offSell();
-        //拒绝采购
-        purchase.refuseBuyIBMComputer();
+        super.mediator.execute("stock.clear");
     }
 }

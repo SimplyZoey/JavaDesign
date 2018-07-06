@@ -14,15 +14,14 @@ import java.util.Random;
  * @create 2018/7/5
  * @since 1.0.0
  */
-public class Sale {
+public class Sale extends AbstractColleague{
+    public Sale(AbstractMediator mediator){
+        super(mediator);
+    }
+
     public void sellIBMComputer(int number) {
-        Stock stock = new Stock();
-        Purchase purchase = new Purchase();
-        if (stock.getStockNumber() < number) {
-            purchase.buyIBMComputer(number);
-        }
+        super.mediator.execute("sale.sell",number);
         System.out.println("销售IBM电脑" + number + "台");
-        stock.decrease(number);
     }
 
     //反馈销售情况，0～100之间变化，0代表根本就没人卖，100代表非常畅销，出一个卖一个
@@ -34,9 +33,7 @@ public class Sale {
     }
 
     public void offSell() {
-        //库房有多少卖多少
-        Stock stock = new Stock();
-        System.out.println("折价销售IBM电脑" + stock.getStockNumber() + "台");
+        super.mediator.execute("sale.offsell");
     }
 
 }
