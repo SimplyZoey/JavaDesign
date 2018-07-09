@@ -8,6 +8,9 @@ package com.rocky.design.observer;
 import com.rocky.design.observer.four.BabyFour;
 import com.rocky.design.observer.four.FatherTwo;
 import com.rocky.design.observer.four.MotherFour;
+import com.rocky.design.observer.impl.HanFeiZi;
+import com.rocky.design.observer.impl.LiSi;
+import com.rocky.design.observer.impl.WangSi;
 import com.rocky.design.observer.one.Baby;
 import com.rocky.design.observer.one.Mother;
 import com.rocky.design.observer.three.BabyThree;
@@ -17,7 +20,13 @@ import com.rocky.design.observer.two.BabyTwo;
 import com.rocky.design.observer.two.MotherTwo;
 
 /**
- * 〈〉
+ * 〈观察者模式〉
+ * 优点：
+ * 1.观察者与被观察者为抽象耦合，便于扩展
+ * 2.建立一套触发模式，观察者模式可以完美的实现一套触发链模式
+ *
+ * 缺点：
+ * 1.考虑开发/运行效率，特别是观察者比较多的情况
  *
  * @author shitian
  * @create 2018/6/28
@@ -25,11 +34,14 @@ import com.rocky.design.observer.two.MotherTwo;
  */
 public class ObserverMain {
 
-    public static void main(String[] args) {
-//        testOne();
-//        testTwo();
-//        testThree();
-        testFour();
+    public static void main(String[] args){
+        HanFeiZi hanFeiZi = new HanFeiZi();
+        hanFeiZi.addObserver(new LiSi());
+        hanFeiZi.addObserver(new WangSi());
+        //然后我们看看韩非子在干什么
+        hanFeiZi.haveBreakfast();
+        //韩非子娱乐了
+        hanFeiZi.haveFun();
     }
 
 

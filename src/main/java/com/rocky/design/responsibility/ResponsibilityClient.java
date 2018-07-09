@@ -14,7 +14,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * 〈〉
+ * 〈责任链模式〉
+ * 优点：
+ * 1：将请求与处理分开，请求不用知道谁处理的，处理者也不用知道请求的全貌，解耦
+ *
+ * 缺点：
+ * 1.性能问题：每次都需要从链头开始判断
+ * 2.调试时候可能会比较复杂
  *
  * @author shitian
  * @create 2018/7/6
